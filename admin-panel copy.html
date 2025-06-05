@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Administración</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/admin-panel.css"/>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <header class="text-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1>Panel de Administración</h1>
+      <nav>
+        <ul class="d-flex gap-3 mb-0">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow-1 container my-4">
+
+    <div class="admin-menu mb-4">
+      <button class="btn btn-outline-primary" onclick="mostrarSeccion('fotos')">📷 Validar Fotografías</button>
+      <button class="btn btn-outline-success" onclick="mostrarSeccion('usuarios')">👥 Gestión de Usuarios</button>
+      <button class="btn btn-outline-warning" onclick="mostrarSeccion('crearRally')">📅 Crear Rally</button>
+    </div>
+
+    <section id="fotos" class="seccion-panel">
+      <div class="container">
+        <div class="tarjeta">
+          <h2 class="titulo text-primary">Fotografías Pendientes</h2>
+          <div id="listaFotos" class="lista-elementos"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="usuarios" class="seccion-panel">
+      <div class="container">
+        <div class="tarjeta">
+          <h2 class="titulo text-primary">Gestión de Usuarios</h2>
+          <div id="listaUsuarios" class="lista-elementos"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="crearRally" class="seccion-panel">
+      <div class="container">
+        <div class="tarjeta">
+          <h2 class="titulo text-primary">Crear Nuevo Rally</h2>
+          <form id="formRally" class="formulario row g-3">
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre del rally</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <textarea id="descripcion" name="descripcion" class="form-control" required></textarea>
+            </div>
+            <div class="col-md-6">
+              <label for="fecha_inicio" class="form-label">Fecha de inicio</label>
+              <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+              <label for="fecha_fin" class="form-label">Fecha de fin</label>
+              <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" required />
+            </div>
+            <div class="col-12 mt-3">
+              <button type="submit" class="btn btn-outline-primary">Crear Rally</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-container" class="mt-auto"></div>
+
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
+  <script src="js/admin-panel.js"></script>
+
+</body>
+
+</html>
+</body>
+
+</html>
